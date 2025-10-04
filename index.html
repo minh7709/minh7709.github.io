@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio — Hoàng Quang Minh</title>
+  <meta name="description" content="Portfolio của Hoàng Quang Minh — Fullstack developer (MERN & LAMP)." />
+  <style>
+    :root{
+      --bg:#0f1724; /* dark navy */
+      --card:#0b1220;
+      --accent:#6ee7b7;
+      --muted:#9aa6b2;
+      --glass: rgba(255,255,255,0.03);
+      --radius:16px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; background:linear-gradient(180deg,#071028 0%, #071827 60%); color:#e6eef6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      display:flex; align-items:center; justify-content:center; padding:40px;
+    }
+    .container{width:100%; max-width:980px;}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:var(--radius); padding:28px; box-shadow:0 8px 30px rgba(2,6,23,0.7); display:grid; grid-template-columns: 260px 1fr; gap:24px;}
+
+    /* Sidebar */
+    .avatar{height:160px; width:160px; border-radius:20px; background:linear-gradient(135deg,#12243a,#18324a); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:36px; color:var(--accent)}
+    .sidebar{display:flex; flex-direction:column; gap:18px}
+    .name{font-size:20px; font-weight:700}
+    .role{color:var(--muted); font-size:14px}
+    .meta{background:var(--glass); padding:12px; border-radius:12px; color:var(--muted); font-size:13px}
+    .stacks{display:flex; flex-wrap:wrap; gap:8px}
+    .chip{padding:8px 10px; background:rgba(255,255,255,0.02); border-radius:999px; font-size:13px; color:#cfeee0}
+    .contact{display:flex; flex-direction:column; gap:8px; font-size:14px}
+
+    /* Main */
+    .main h2{margin:0 0 10px 0}
+    .bio{color:var(--muted); line-height:1.6}
+    .section{margin-top:18px}
+    .projects{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:12px}
+    .project{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02)); padding:12px; border-radius:12px}
+    .project h3{margin:0 0 6px 0; font-size:15px}
+    .project p{margin:0; font-size:13px; color:var(--muted)}
+
+    .cta{margin-top:18px; display:flex; gap:12px}
+    .btn{padding:10px 14px; border-radius:12px; background:transparent; border:1px solid rgba(255,255,255,0.06); cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,#10b981,#06b6d4); color:#04111a; border:none}
+
+    footer{margin-top:18px; color:var(--muted); font-size:13px}
+
+    @media (max-width:800px){
+      .card{grid-template-columns:1fr;}
+      .avatar{margin:0 auto}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" role="region" aria-label="Portfolio Hoàng Quang Minh">
+      <aside class="sidebar" aria-label="Thông tin chính">
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="avatar" aria-hidden="true">HQ</div>
+          <div>
+            <div class="name">Hoàng Quang Minh</div>
+            <div class="role">22 tuổi • Fullstack developer</div>
+          </div>
+        </div>
+
+        <div class="meta">
+          <strong>Kỹ năng chính</strong>
+          <div class="stacks" style="margin-top:8px">
+            <span class="chip">MERN (Mongo/Express/React/Node)</span>
+            <span class="chip">LAMP (Linux/Apache/MySQL/PHP)</span>
+            <span class="chip">Java</span>
+            <span class="chip">React</span>
+            <span class="chip">Docker</span>
+          </div>
+        </div>
+
+        <div class="contact">
+          <div><strong>Email:</strong> <span style="color:var(--accent)">minh@example.com</span></div>
+          <div><strong>Github:</strong> <span style="color:var(--accent)">github.com/hoangqminh</span></div>
+          <div><strong>Location:</strong> Việt Nam</div>
+        </div>
+
+        <div style="margin-top:auto">
+          <button class="btn btn-primary">Tải CV</button>
+        </div>
+      </aside>
+
+      <main class="main">
+        <h1 style="margin:0 0 6px 0">Hoàng Quang Minh</h1>
+        <div class="bio">Xin chào — tôi là một Fullstack developer 22 tuổi, chuyên xây dựng ứng dụng web bằng MERN và LAMP stacks. Tôi tập trung vào viết code sạch, hệ thống có thể mở rộng và trải nghiệm người dùng mượt mà.</div>
+
+        <section class="section">
+          <h2>Projects tiêu biểu</h2>
+          <div class="projects">
+            <article class="project">
+              <h3>Hệ thống e-commerce (MERN)</h3>
+              <p>React + Node + Express + MongoDB, hỗ trợ authentication, payment mock, admin dashboard.</p>
+            </article>
+
+            <article class="project">
+              <h3>Blog platform (LAMP)</h3>
+              <p>PHP + MySQL + Apache, hệ thống quản trị nội dung, SEO-friendly và responsive.</p>
+            </article>
+
+            <article class="project">
+              <h3>Realtime Chat App</h3>
+              <p>Sử dụng WebSocket/Socket.io, deploy bằng Docker, scale thử nghiệm với PM2.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Kinh nghiệm & học vấn</h2>
+          <p class="meta" style="padding:12px; border-radius:12px">Đã làm việc với nhiều dự án nhỏ và startup, quen thuộc với workflow Git, CI/CD cơ bản và môi trường Linux. Tham gia các dự án sử dụng cả hai stack MERN và LAMP.</p>
+        </section>
+
+        <div class="cta">
+          <button class="btn">Liên hệ</button>
+          <button class="btn">Xem Github</button>
+        </div>
+
+        <footer>© 2025 Hoàng Quang Minh — Portfolio đơn giản để giới thiệu năng lực.</footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
