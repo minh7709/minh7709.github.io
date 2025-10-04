@@ -9,7 +9,7 @@
     :root{
       --bg:#0f1724; /* dark navy */
       --card:#0b1220;
-      --accent:#6ee7b7;
+      --accent:#f87171; /* red accent */
       --muted:#9aa6b2;
       --glass: rgba(255,255,255,0.03);
       --radius:16px;
@@ -18,13 +18,19 @@
     *{box-sizing:border-box}
     body{
       margin:0; min-height:100vh; background:linear-gradient(180deg,#071028 0%, #071827 60%); color:#e6eef6;
-      display:flex; align-items:center; justify-content:center; padding:40px;
+      display:flex; flex-direction:column; align-items:center; justify-content:flex-start; padding:0;
       overflow-x:hidden;
     }
-    .container{width:100%; max-width:980px;}
+    .container{width:100%; max-width:1080px; padding:40px;}
     .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:var(--radius); padding:28px; box-shadow:0 8px 30px rgba(2,6,23,0.7); display:grid; grid-template-columns: 260px 1fr; gap:24px;
       animation: fadeInUp 1s ease;
     }
+
+    /* Navbar */
+    nav{width:100%; background:rgba(11,18,32,0.9); backdrop-filter:blur(6px); position:sticky; top:0; z-index:100;}
+    nav ul{margin:0; padding:12px 40px; display:flex; gap:24px; list-style:none; justify-content:center;}
+    nav a{color:#e6eef6; text-decoration:none; font-weight:500; transition:color 0.3s ease;}
+    nav a:hover{color:var(--accent)}
 
     /* Sidebar */
     .avatar{height:160px; width:160px; border-radius:20px; background:linear-gradient(135deg,#12243a,#18324a); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:36px; color:var(--accent);
@@ -35,8 +41,8 @@
     .role{color:var(--muted); font-size:14px; animation: fadeIn 1.5s ease;}
     .meta{background:var(--glass); padding:12px; border-radius:12px; color:var(--muted); font-size:13px; animation: fadeInUp 1.3s ease;}
     .stacks{display:flex; flex-wrap:wrap; gap:8px}
-    .chip{padding:8px 10px; background:rgba(255,255,255,0.02); border-radius:999px; font-size:13px; color:#cfeee0; transition:transform 0.3s ease;}
-    .chip:hover{transform:scale(1.08); background:rgba(110,231,183,0.1);}
+    .chip{padding:8px 10px; background:rgba(255,255,255,0.02); border-radius:999px; font-size:13px; color:#ffd3d3; transition:transform 0.3s ease;}
+    .chip:hover{transform:scale(1.08); background:rgba(248,113,113,0.1);}
     .contact{display:flex; flex-direction:column; gap:8px; font-size:14px}
 
     /* Main */
@@ -46,13 +52,13 @@
     .projects{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:12px}
     .project{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02)); padding:12px; border-radius:12px; transition:transform 0.3s ease, box-shadow 0.3s ease; animation: fadeInUp 1.8s ease;}
     .project:hover{transform:translateY(-6px); box-shadow:0 10px 30px rgba(0,0,0,0.4);}
-    .project h3{margin:0 0 6px 0; font-size:15px}
+    .project h3{margin:0 0 6px 0; font-size:15px; color:var(--accent)}
     .project p{margin:0; font-size:13px; color:var(--muted)}
 
     .cta{margin-top:18px; display:flex; gap:12px}
     .btn{padding:10px 14px; border-radius:12px; background:transparent; border:1px solid rgba(255,255,255,0.06); cursor:pointer; transition:all 0.3s ease;}
     .btn:hover{background:rgba(255,255,255,0.05); transform:translateY(-2px)}
-    .btn-primary{background:linear-gradient(90deg,#10b981,#06b6d4); color:#04111a; border:none;}
+    .btn-primary{background:linear-gradient(90deg,#ef4444,#b91c1c); color:#fff; border:none;}
     .btn-primary:hover{opacity:0.9;}
 
     footer{margin-top:18px; color:var(--muted); font-size:13px; animation: fadeIn 2s ease;}
@@ -78,11 +84,21 @@
     @media (max-width:800px){
       .card{grid-template-columns:1fr;}
       .avatar{margin:0 auto}
+      nav ul{flex-direction:column; align-items:center;}
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#project">Project</a></li>
+      <li><a href="#skill">Skill</a></li>
+    </ul>
+  </nav>
+
+  <div class="container" id="home">
     <div class="card" role="region" aria-label="Portfolio Hoàng Quang Minh">
       <aside class="sidebar" aria-label="Thông tin chính">
         <div style="display:flex;gap:12px;align-items:center">
@@ -93,7 +109,7 @@
           </div>
         </div>
 
-        <div class="meta">
+        <div class="meta" id="skill">
           <strong>Kỹ năng chính</strong>
           <div class="stacks" style="margin-top:8px">
             <span class="chip">MERN (Mongo/Express/React/Node)</span>
@@ -116,10 +132,10 @@
       </aside>
 
       <main class="main">
-        <h1>Hoàng Quang Minh</h1>
+        <h1 id="about">Hoàng Quang Minh</h1>
         <div class="bio">Xin chào — tôi là một Fullstack developer 22 tuổi, chuyên xây dựng ứng dụng web bằng MERN và LAMP stacks. Tôi tập trung vào viết code sạch, hệ thống có thể mở rộng và trải nghiệm người dùng mượt mà.</div>
 
-        <section class="section">
+        <section class="section" id="project">
           <h2>Projects tiêu biểu</h2>
           <div class="projects">
             <article class="project">
