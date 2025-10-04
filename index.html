@@ -17,36 +17,63 @@
     }
     *{box-sizing:border-box}
     body{
-      margin:0; min-height:100vh; background:linear-gradient(180deg,#071028 0%, #071827 60%); color:#e6eef6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      margin:0; min-height:100vh; background:linear-gradient(180deg,#071028 0%, #071827 60%); color:#e6eef6;
       display:flex; align-items:center; justify-content:center; padding:40px;
+      overflow-x:hidden;
     }
     .container{width:100%; max-width:980px;}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:var(--radius); padding:28px; box-shadow:0 8px 30px rgba(2,6,23,0.7); display:grid; grid-template-columns: 260px 1fr; gap:24px;}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:var(--radius); padding:28px; box-shadow:0 8px 30px rgba(2,6,23,0.7); display:grid; grid-template-columns: 260px 1fr; gap:24px;
+      animation: fadeInUp 1s ease;
+    }
 
     /* Sidebar */
-    .avatar{height:160px; width:160px; border-radius:20px; background:linear-gradient(135deg,#12243a,#18324a); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:36px; color:var(--accent)}
+    .avatar{height:160px; width:160px; border-radius:20px; background:linear-gradient(135deg,#12243a,#18324a); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:36px; color:var(--accent);
+      animation: pulse 3s infinite;
+    }
     .sidebar{display:flex; flex-direction:column; gap:18px}
-    .name{font-size:20px; font-weight:700}
-    .role{color:var(--muted); font-size:14px}
-    .meta{background:var(--glass); padding:12px; border-radius:12px; color:var(--muted); font-size:13px}
+    .name{font-size:20px; font-weight:700; animation: fadeIn 1.2s ease;}
+    .role{color:var(--muted); font-size:14px; animation: fadeIn 1.5s ease;}
+    .meta{background:var(--glass); padding:12px; border-radius:12px; color:var(--muted); font-size:13px; animation: fadeInUp 1.3s ease;}
     .stacks{display:flex; flex-wrap:wrap; gap:8px}
-    .chip{padding:8px 10px; background:rgba(255,255,255,0.02); border-radius:999px; font-size:13px; color:#cfeee0}
+    .chip{padding:8px 10px; background:rgba(255,255,255,0.02); border-radius:999px; font-size:13px; color:#cfeee0; transition:transform 0.3s ease;}
+    .chip:hover{transform:scale(1.08); background:rgba(110,231,183,0.1);}
     .contact{display:flex; flex-direction:column; gap:8px; font-size:14px}
 
     /* Main */
-    .main h2{margin:0 0 10px 0}
-    .bio{color:var(--muted); line-height:1.6}
-    .section{margin-top:18px}
+    .main h1{margin:0 0 6px 0; animation: fadeInDown 1.2s ease;}
+    .bio{color:var(--muted); line-height:1.6; animation: fadeIn 1.6s ease;}
+    .section{margin-top:18px;}
     .projects{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:12px}
-    .project{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02)); padding:12px; border-radius:12px}
+    .project{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02)); padding:12px; border-radius:12px; transition:transform 0.3s ease, box-shadow 0.3s ease; animation: fadeInUp 1.8s ease;}
+    .project:hover{transform:translateY(-6px); box-shadow:0 10px 30px rgba(0,0,0,0.4);}
     .project h3{margin:0 0 6px 0; font-size:15px}
     .project p{margin:0; font-size:13px; color:var(--muted)}
 
     .cta{margin-top:18px; display:flex; gap:12px}
-    .btn{padding:10px 14px; border-radius:12px; background:transparent; border:1px solid rgba(255,255,255,0.06); cursor:pointer}
-    .btn-primary{background:linear-gradient(90deg,#10b981,#06b6d4); color:#04111a; border:none}
+    .btn{padding:10px 14px; border-radius:12px; background:transparent; border:1px solid rgba(255,255,255,0.06); cursor:pointer; transition:all 0.3s ease;}
+    .btn:hover{background:rgba(255,255,255,0.05); transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(90deg,#10b981,#06b6d4); color:#04111a; border:none;}
+    .btn-primary:hover{opacity:0.9;}
 
-    footer{margin-top:18px; color:var(--muted); font-size:13px}
+    footer{margin-top:18px; color:var(--muted); font-size:13px; animation: fadeIn 2s ease;}
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from{opacity:0; transform:translateY(30px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+    @keyframes fadeInDown {
+      from{opacity:0; transform:translateY(-30px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+    @keyframes fadeIn {
+      from{opacity:0}
+      to{opacity:1}
+    }
+    @keyframes pulse {
+      0%,100%{transform:scale(1)}
+      50%{transform:scale(1.05)}
+    }
 
     @media (max-width:800px){
       .card{grid-template-columns:1fr;}
@@ -79,7 +106,7 @@
 
         <div class="contact">
           <div><strong>Email:</strong> <span style="color:var(--accent)">minh@example.com</span></div>
-          <div><strong>Github:</strong> <span style="color:var(--accent)">github.com/hoangqminh</span></div>
+          <div><strong>Github:</strong> <a href="https://github.com/minh7709" style="color:var(--accent)" target="_blank">github.com/minh7709</a></div>
           <div><strong>Location:</strong> Việt Nam</div>
         </div>
 
@@ -89,7 +116,7 @@
       </aside>
 
       <main class="main">
-        <h1 style="margin:0 0 6px 0">Hoàng Quang Minh</h1>
+        <h1>Hoàng Quang Minh</h1>
         <div class="bio">Xin chào — tôi là một Fullstack developer 22 tuổi, chuyên xây dựng ứng dụng web bằng MERN và LAMP stacks. Tôi tập trung vào viết code sạch, hệ thống có thể mở rộng và trải nghiệm người dùng mượt mà.</div>
 
         <section class="section">
@@ -119,7 +146,7 @@
 
         <div class="cta">
           <button class="btn">Liên hệ</button>
-          <button class="btn">Xem Github</button>
+          <a href="https://github.com/minh7709" target="_blank" class="btn">Xem Github</a>
         </div>
 
         <footer>© 2025 Hoàng Quang Minh — Portfolio đơn giản để giới thiệu năng lực.</footer>
